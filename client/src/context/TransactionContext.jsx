@@ -16,14 +16,14 @@ const createEthereumContract = () => {
 };
 
 export const TransactionsProvider = ({ children }) => {
-  const [formData, setformData] = useState({ addressTo: "", amount: "", keyword: "", message: "" });
+  const [cryptoFormData, setcryptoFormData] = useState({ addressTo: "", amount: "", keyword: "", message: "" });
   const [currentAccount, setCurrentAccount] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [transactionCount, setTransactionCount] = useState(localStorage.getItem("transactionCount"));
   const [transactions, setTransactions] = useState([]);
 
   const handleChange = (e, name) => {
-    setformData((prevState) => ({ ...prevState, [name]: e.target.value }));
+    setcryptoFormData((prevState) => ({ ...prevState, [name]: e.target.value }));
   };
 
   const getAllTransactions = async () => {
@@ -104,7 +104,7 @@ export const TransactionsProvider = ({ children }) => {
   const sendTransaction = async () => {
     try {
       if (ethereum) {
-        const { addressTo, amount, keyword, message } = formData;
+        const { addressTo, amount, keyword, message } = cryptoFormData;
         const transactionsContract = createEthereumContract();
         const parsedAmount = ethers.utils.parseEther(amount);
 
@@ -155,7 +155,7 @@ export const TransactionsProvider = ({ children }) => {
         isLoading,
         sendTransaction,
         handleChange,
-        formData,
+        cryptoFormData,
       }}
     >
       {children}

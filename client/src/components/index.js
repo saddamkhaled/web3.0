@@ -6,4 +6,5 @@ export { default as Footer } from "./Footer";
 export { default as Services } from "./Services";
 export { default as Transactions } from "./Transactions";
 export { default as CoinHistory } from "./CoinHistory";
-export { default as CoinList } from "./CoinList";
+export { default as NFTMarket } from "./Nfts";
+export { default as CollectionPage } from "./CollectionPage";

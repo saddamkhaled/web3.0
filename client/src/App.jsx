@@ -6,7 +6,8 @@ import {
   Transactions,
   CryptoMarket,
   CoinHistory,
-  CoinList
+  NFTMarket,
+  CollectionPage
 } from "./components";
 import React from "react";
 
@@ -27,7 +28,9 @@ const App = () => (
         <Route path="/CryptoMarket" element={<CryptoMarket />} />
         <Route path="/CoinHistory/:coinId" element={<CoinHistory  />} />
 
-        <Route path="/CoinList" element={<CoinList />} />
+        <Route path="/Nfts" element={<NFTMarket />} />
+        <Route path="/CollectionPage/:id" element={<CollectionPage  />} />
+
         <Route path="/home" element={<Welcome />} />
         <Route path="/transactions" element={<Transactions />} />
         <Route path="/" element={renderedItems} />
