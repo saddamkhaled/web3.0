@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Coin from './Coin';
+import { Loader } from ".";
+
 import '../styles/CryptoMarket.css';
 
 function CryptoMarket() {
   const [coins, setCoins] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState('');
 
   useEffect(() => {
@@ -15,6 +18,7 @@ function CryptoMarket() {
       )
       .then(res => {
         setCoins(res.data);
+        setIsLoading(false);
         console.log(res.data);
       })
       .catch(error => console.log(error));
@@ -27,7 +31,14 @@ function CryptoMarket() {
   const filteredCoins = coins.filter(coin =>
     coin.name.toLowerCase().includes(search.toLowerCase())
   );
-
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Loader />
+        <p className="text-purple-600 text-lg ml-2">Loading Crypto Market...</p>
+      </div>
+    );
+  }
   return (
     <div className='coin-app'>
       <div className='coin-search'>

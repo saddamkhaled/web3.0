@@ -29,7 +29,7 @@ const App = () => (
         <Route path="/CoinHistory/:coinId" element={<CoinHistory  />} />
 
         <Route path="/Nfts" element={<NFTMarket />} />
-        <Route path="/CollectionPage/:collection_slug" element={<CollectionPage  />} />
+        <Route path="/CollectionPage/:id" element={<CollectionPage  />} />
 
         <Route path="/home" element={<Welcome />} />
         <Route path="/transactions" element={<Transactions />} />
